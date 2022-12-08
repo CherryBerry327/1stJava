@@ -18,7 +18,7 @@
     <!-- 회원 가입 -->
     <insert id="addMember" parameterType="movieweb.webapp.model.dto.User">
         INSERT INTO User(userID, userName, userTel, userEmail, password)
-        VALUES (#{userID}, #{userName}, #{userTel}, #{userEmail},#{password}, 3)
+        VALUES (#{userID}, #{userName}, #{userTel}, #{userEmail},#{password})
     </insert>
 
     <!-- 로그인 -->

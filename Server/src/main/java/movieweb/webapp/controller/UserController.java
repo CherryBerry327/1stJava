@@ -39,7 +39,7 @@ public class UserController {
     }
     @PostMapping("/addMember")
     public String addMember(User dto) {
-        logger.info("MemberController addMember()");
+        logger.info("UserController addMember()");
         boolean b = userService.addMember(dto);
 
         logger.info(dto.toString());
@@ -52,7 +52,7 @@ public class UserController {
 
     @PostMapping("/login")
     public User login(User dto) {
-        logger.info("MemberController login()");
+        logger.info("UserController login()");
         return userService.login(dto);
     }
 }

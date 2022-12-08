@@ -52,17 +52,8 @@
         <tr>
             <td>아이디</td>
             <td>
-                <input type="text" id="userID" placeholder="아이디" size="20" />
-                <p id="idcheck"></p>
-                <button type="button" id="idCheckBtn">중복확인</button>
+                <input type="text" id = "userID" name="userID" placeholder="아이디" size="20" />
             </td>
-        </tr>
-        <tr>
-            <td>사용할 아이디</td>
-            <td>
-                <input type="text" id="id" name="id" size="20" readonly/>
-            </td>
-        </tr>
         <tr>
             <td>이름</td>
             <td>
@@ -103,15 +94,14 @@
 
         // 이를 통해 서버단으로부터 전달받은 내용(`res`)가 각각 어떤 메시지를 리턴해주는가에 따른 작업을 처리한다.
 
-
         $("#idCheckBtn").click(function () {
             $.ajax({
                 url: "http://localhost:8080/getId",
                 type: "POST",
                 data: {"id": $("#userID").val()},
-                success: function (res) {
-                    // alert('success')
-                    if (res.trim() == 'ok') {
+                success: function (response) {
+                     alert('success')
+                    if (response.trim() == 'ok') {
                         $("#idcheck").html("사용 가능한 아이디입니다.");
                         $("#id").val($("#userID").val());
                     } else {
@@ -141,20 +131,25 @@
                     "password": $("#password").val()
                 },
 
-                // 마찬가지로 리턴받은 메시지(res)의 결과에 따라 처리해준다.
-                success: function (res) {
-                    if (res.trim() == 'ok') {
-                        console.log(res);
+                // 마찬가지로 리턴받은 (response)의 결과에 따라 처리해준다.
+                success: function (response) {
+                    if (response.trim() == 'ok') {
+                        console.log(response);
                         alert("가입되었습니다!");
-                        // location.href="login.html";
+                        location.href="../login";
                     } else {
                         alert("가입되지 않았습니다!");
+                        console.log(response);
                         $("#userID").val("");
                         $("#userName").val("");
                         $("#userEmail").val("");
                         $("#userTel").val("");
                         $("#password").val("");
                     }
+                },
+                error: function (error) {
+                    alert('error')
+                    console.log(error);
                 }
             });
         });

@@ -56,6 +56,8 @@ public class SeoTestController {
     }
     @GetMapping("register")
     public String Register() { return "register"; }
+    @GetMapping("login")
+    public String Login() { return "login"; }
 
     static class Hello {
         private String name;
